@@ -87,8 +87,8 @@ body {
   background: #ffffff;
   background-image: radial-gradient(
       at 32.9% 49.6%,
-      #ffcdf2 0px,
+      #fff2fb 0px,
       transparent 50%
     ),
-    radial-gradient(at 73.7% 47.3%, #fae1c5 0px, transparent 50%);
+    radial-gradient(at 73.7% 47.3%, #faecde 0px, transparent 50%);
 }

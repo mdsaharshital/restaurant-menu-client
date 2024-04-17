@@ -1,8 +1,8 @@
-import { Inter } from "next/font/google";
+import { Rubik } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const rubik = Rubik({ subsets: ["latin"] });
 
 export const metadata = {
   title: "QR To Menu",
@@ -12,9 +12,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={rubik.className}>
         <Navbar />
-        <div className="pt-24">{children}</div>
+        <div className="pt-[70px]">{children}</div>
       </body>
     </html>
   );
