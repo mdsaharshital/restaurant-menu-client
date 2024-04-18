@@ -18,7 +18,6 @@ export default async function SingleRestaurant({ params }) {
           <p className="text-gray-600 mb-2">Location: {data.location}</p>
           <p className="text-gray-600 mb-2">Username: {data.username}</p>
           <hr className="my-4" />
-
           <OnlyMenu menu={data.menu} categories={categories} />
         </div>
       </div>
