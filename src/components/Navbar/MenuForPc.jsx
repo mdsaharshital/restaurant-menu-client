@@ -1,8 +1,18 @@
 "use client";
 import Link from "next/link";
+import logo from "@/assets/leologo - Copy.jpg";
 import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
-import { CircleUserRound } from "lucide-react";
+import { CircleUser, CircleUserRound } from "lucide-react";
+import Image from "next/image";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function MenuForPc() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -31,7 +41,7 @@ export default function MenuForPc() {
 
   return (
     <>
-      <div className="lg:flex items-center gap-1 hidden">
+      {/* <div className="lg:flex items-center gap-1 hidden">
         {!isLoggedIn && (
           <>
             <Link href={"/login"}>
@@ -62,7 +72,43 @@ export default function MenuForPc() {
             </Link>
           </>
         )}
+      </div> */}
+      <div className="mx-2 md:hidden font-bold text-lg cursor-pointer flex items-center">
+        <Link
+          href="/"
+          className="flex items-center gap-2 text-lg font-semibold md:text-base"
+        >
+          <Image src={logo} alt="Logo" width={40} />
+          <h1 className="">QRToMenu</h1>
+        </Link>
       </div>
+      {!isLoggedIn && (
+        <div className="">
+          <Link href={"/login"}>
+            <Button variant="outline" className="mx-2">
+              Join US
+            </Button>
+          </Link>
+        </div>
+      )}
+      {isLoggedIn && (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="secondary" size="icon" className="rounded-full">
+              <CircleUser className="h-5 w-5" />
+              <span className="sr-only">Toggle user menu</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuItem>Support</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Logout</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )}
     </>
   );
 }

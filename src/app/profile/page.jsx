@@ -1,12 +1,12 @@
+import { Dashboard } from "@/components/Users/MenuProfile/DashProfile";
+import MenuProfile from "@/components/Users/MenuProfile/MenuProfile";
 import React from "react";
 
 export default function ProfilePage() {
   return (
     <div>
-      <h1>profile</h1>
-      <h1>profile</h1>
-      <h1>profile</h1>
-      <h1>profile</h1>
+      <Dashboard />
+      {/* <MenuProfile /> */}
     </div>
   );
 }
