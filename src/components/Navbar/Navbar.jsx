@@ -4,6 +4,7 @@ import logo from "@/assets/leologo - Copy.jpg";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import ToggleMenu from "./ToggleMenu";
+import MenuForPc from "./MenuForPc";
 
 const Navbar = () => {
   return (
@@ -44,16 +45,7 @@ const Navbar = () => {
           </div>
 
           {/* Login btn */}
-          <div className="lg:block hidden ">
-            <Link href={"/login"}>
-              <Button variant="outline" className="mx-2">
-                Login
-              </Button>
-            </Link>
-            <Link href={"/signup"}>
-              <Button>Register</Button>
-            </Link>
-          </div>
+          <MenuForPc />
           <ToggleMenu />
         </div>
       </nav>

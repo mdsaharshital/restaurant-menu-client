@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import hero1 from "@/assets/singup.jpg";
+import SignUpComp from "@/components/SignUpComp";
 
 const SignUp = () => {
   return (
@@ -26,44 +27,7 @@ const SignUp = () => {
                 Enter your email below to create your account
               </p>
             </div>
-            <div className="grid gap-4">
-              <div className="grid gap-2">
-                <Label htmlFor="name">Your Restaurant name</Label>
-                <Input
-                  id="name"
-                  type="text"
-                  placeholder="Food Junction"
-                  required
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                />
-              </div>
-              <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                </div>
-                <Input id="password" type="password" required />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="location">Location</Label>
-                <Input
-                  id="location"
-                  type="text"
-                  placeholder="Dhamrai Bajar, Dhaka"
-                  required
-                />
-              </div>
-              <Button type="submit" className="w-full">
-                Signup
-              </Button>
-            </div>
+            <SignUpComp />
             <div className="mt-4 text-center text-sm">
               Already have an account?{" "}
               <Link href="/login" className="underline">

@@ -12,6 +12,7 @@ export const adminLogin = async (data) => {
 
     // Store the token in localStorage
     localStorage.setItem("adminToken", response.data.token);
+    window.dispatchEvent(new Event("storage"));
 
     return { success: true, message: "Admin login successful" };
   } catch (error) {
@@ -26,11 +27,12 @@ export const adminLogin = async (data) => {
 /////////////////////////////////////
 export const createRestaurant = async (data) => {
   try {
-    const response = await axios.post(`${baseURL}/api/restaurants`, data);
+    const response = await axios.post(`${baseURL}/api/auth/restaurants`, data);
     const { token } = response.data;
 
     // Store the token in localStorage
     localStorage.setItem("restaurantToken", token);
+    window.dispatchEvent(new Event("storage"));
 
     return { success: true, message: "Restaurant created successfully" };
   } catch (error) {
@@ -69,6 +71,8 @@ export const restaurantLogin = async (data) => {
 
     // Store the token in localStorage
     localStorage.setItem("restaurantToken", token);
+
+    window.dispatchEvent(new Event("storage"));
 
     return { success: true, message: "Restaurant login successful" };
   } catch (error) {

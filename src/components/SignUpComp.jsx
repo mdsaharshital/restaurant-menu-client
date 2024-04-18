@@ -1,15 +1,14 @@
 "use client";
-import { useToast } from "@/components/ui/use-toast";
-import Link from "next/link";
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { restaurantLogin } from "../../fetcher/authReq";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import Toast from "@/components/Toast/Toast";
+import { Label } from "./ui/label";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
+import { useToast } from "./ui/use-toast";
+import { createRestaurant } from "../../fetcher/authReq";
+import { useForm } from "react-hook-form";
 
-export default function LoginCom() {
+export default function SignUpComp() {
   const { toast } = useToast();
   const router = useRouter();
   const {
@@ -19,7 +18,7 @@ export default function LoginCom() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const { success, message } = await restaurantLogin(data);
+    const { success, message } = await createRestaurant(data);
     if (success) {
       router.push("/profile");
       toast({
@@ -32,11 +31,22 @@ export default function LoginCom() {
       });
       // Toast();
     }
-    console.log(message);
+    console.log(data);
   };
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
+      <div className="grid gap-2">
+        <Label htmlFor="name">Your Restaurant name</Label>
+        <Input
+          id="name"
+          type="text"
+          placeholder="Food Junction"
+          {...register("name", { required: "Restaurant name is required" })}
+        />
+        {errors.name && (
+          <span className="text-red-500">{errors.name.message}</span>
+        )}
+      </div>
       <div className="grid gap-2">
         <Label htmlFor="email">Email</Label>
         <Input
@@ -50,9 +60,7 @@ export default function LoginCom() {
         )}
       </div>
       <div className="grid gap-2">
-        <div className="flex items-center">
-          <Label htmlFor="password">Password</Label>
-        </div>
+        <Label htmlFor="password">Password</Label>
         <Input
           id="password"
           type="password"
@@ -62,15 +70,21 @@ export default function LoginCom() {
           <span className="text-red-500">{errors.password.message}</span>
         )}
       </div>
-      <button type="submit" className="w-full bg-black text-white py-2">
-        Login
-      </button>
-      <div className="mt-4 text-center text-sm">
-        Don&apos;t have an account?{" "}
-        <Link href="/signup" className="underline">
-          Sign up
-        </Link>
+      <div className="grid gap-2">
+        <Label htmlFor="location">Location</Label>
+        <Input
+          id="location"
+          type="text"
+          placeholder="Dhamrai Bajar, Dhaka"
+          {...register("location", { required: "Location is required" })}
+        />
+        {errors.location && (
+          <span className="text-red-500">{errors.location.message}</span>
+        )}
       </div>
+      <Button type="submit" className="w-full">
+        Signup
+      </Button>
     </form>
   );
 }
