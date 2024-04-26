@@ -40,7 +40,35 @@ export const addMenuItemToRestaurantMenu = async (username, data) => {
   try {
     const response = await axios.post(
       `${baseURL}/api/restaurants/${username}/menu`,
-      data
+      data,
+      {
+        headers: {
+          Authorization: token,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+// check token validity
+export const verifySessionToken = async () => {
+  const token = localStorage.getItem("restaurantToken");
+  try {
+    const config = {
+      headers: { Authorization: `${token}` },
+    };
+
+    const bodyParameters = {
+      key: "value",
+    };
+    const response = await axios.post(
+      `${baseURL}/api/check-session`,
+      bodyParameters,
+      config
     );
     return response.data;
   } catch (error) {
@@ -58,7 +86,13 @@ export const updateMenuItemInRestaurantMenu = async (
   try {
     const response = await axios.put(
       `${baseURL}/api/restaurants/${restaurantId}/menu/${menuItemId}`,
-      data
+      data,
+      {
+        headers: {
+          Authorization: token,
+          "Content-Type": "application/json",
+        },
+      }
     );
     return response.data;
   } catch (error) {
@@ -72,7 +106,13 @@ export const updateRestaurantStatus = async (restaurantId, status) => {
   try {
     const response = await axios.put(
       `${baseURL}/api/restaurants/status/${restaurantId}`,
-      { status }
+      { status },
+      {
+        headers: {
+          Authorization: token,
+          "Content-Type": "application/json",
+        },
+      }
     );
     return response.data;
   } catch (error) {
@@ -85,7 +125,13 @@ export const updateRestaurantStatus = async (restaurantId, status) => {
 export const deleteRestaurant = async (restaurantId) => {
   try {
     const response = await axios.delete(
-      `${baseURL}/api/restaurants/${restaurantId}`
+      `${baseURL}/api/restaurants/${restaurantId}`,
+      {
+        headers: {
+          Authorization: token,
+          "Content-Type": "application/json",
+        },
+      }
     );
     return response.data;
   } catch (error) {

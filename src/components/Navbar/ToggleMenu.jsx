@@ -36,7 +36,7 @@ export default function ToggleMenu() {
     <div className="flex items-center gap-4 lg:hidden">
       {isLoggedIn && ( // Conditionally render profile icon
         <div className="lg:hidden">
-          <Link href={"/profile"}>
+          <Link href={"/dashboard/profile"}>
             <>
               <CircleUserRound />
             </>

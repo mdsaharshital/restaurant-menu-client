@@ -20,7 +20,7 @@ export default function SignUpComp() {
   const onSubmit = async (data) => {
     const { success, message } = await createRestaurant(data);
     if (success) {
-      router.push("/profile");
+      router.push("/dashboard/profile");
       toast({
         description: message,
       });

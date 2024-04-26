@@ -85,7 +85,7 @@ export default function MenuForPc() {
       {!isLoggedIn && (
         <div className="">
           <Link href={"/login"}>
-            <Button variant="outline" className="mx-2">
+            <Button variant="" className="mx-2">
               Join US
             </Button>
           </Link>
@@ -102,10 +102,21 @@ export default function MenuForPc() {
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Support</DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href={"/dashboard/profile"}>Profile</Link>
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Logout</DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link
+                href={"/"}
+                onClick={() => {
+                  localStorage.removeItem("restaurantToken");
+                  window.dispatchEvent(new Event("storage"));
+                }}
+              >
+                Logout
+              </Link>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )}

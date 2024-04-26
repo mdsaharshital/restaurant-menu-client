@@ -15,6 +15,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import NavLinks from "./NavLinks";
 
 const Navbar = () => {
   const links = [
@@ -83,15 +84,7 @@ const Navbar = () => {
               <h1 className="">QRToMenu</h1>
             </Link>
           </div>
-          {links.map((link, index) => (
-            <Link
-              className="text-muted-foreground transition-colors hover:text-foreground"
-              key={index}
-              href={link.href}
-            >
-              {link.text}
-            </Link>
-          ))}
+          <NavLinks links={links} />
         </nav>
         <Sheet>
           <SheetTrigger asChild>

@@ -21,7 +21,7 @@ export default function LoginCom() {
   const onSubmit = async (data) => {
     const { success, message } = await restaurantLogin(data);
     if (success) {
-      router.push("/profile");
+      router.push("/dashboard/profile");
       toast({
         description: message,
       });
