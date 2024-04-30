@@ -41,38 +41,6 @@ export default function MenuForPc() {
 
   return (
     <>
-      {/* <div className="lg:flex items-center gap-1 hidden">
-        {!isLoggedIn && (
-          <>
-            <Link href={"/login"}>
-              <Button variant="outline" className="">
-                Login
-              </Button>
-            </Link>
-            <Link href={"/signup"}>
-              <Button>Register</Button>
-            </Link>
-          </>
-        )}
-        {isLoggedIn && ( // Conditionally render profile icon
-          <>
-            <Link href={"/profile"}>
-              <Button variant="outline">
-                <CircleUserRound />
-              </Button>
-            </Link>
-            <Link
-              href={"/"}
-              onClick={() => {
-                localStorage.removeItem("restaurantToken");
-                window.dispatchEvent(new Event("storage"));
-              }}
-            >
-              <Button variant="destructive">Logout</Button>
-            </Link>
-          </>
-        )}
-      </div> */}
       <div className="mx-2 md:hidden font-bold text-lg cursor-pointer flex items-center">
         <Link
           href="/"
